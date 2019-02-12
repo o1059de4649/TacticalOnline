@@ -1,13 +1,10 @@
 ﻿<Properties StartupConfiguration="{62AC5CB1-EDA0-FD20-E6B8-488CAC79EBE1}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ScriptCSS/CameraControll.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SkillSlotSetSkill.cs">
     <Files>
-      <File FileName="Assets/ScriptCSS/CameraRotate.cs" Line="29" Column="27" />
-      <File FileName="Assets/ScriptCSS/TPSControll_y.cs" Line="49" Column="74" />
-      <File FileName="Assets/Standard Assets/CrossPlatformInput/Scripts/MobileControlRig.cs" Line="94" Column="47" />
-      <File FileName="Assets/ScriptCSS/MovePlayer.cs" Line="25" Column="23" />
-      <File FileName="Assets/ScriptCSS/JoystickWalk.cs" Line="112" Column="9" />
-      <File FileName="Assets/ScriptCSS/CameraStork.cs" Line="47" Column="67" />
-      <File FileName="Assets/ScriptCSS/CameraControll.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/OptionControl.cs" Line="44" Column="20" />
+      <File FileName="Assets/Script/DropObject.cs" Line="26" Column="8" />
+      <File FileName="Assets/Script/SkillSlotSetSkill.cs" Line="31" Column="5" />
+      <File FileName="Assets/Script/SkillButtonControl.cs" Line="21" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
