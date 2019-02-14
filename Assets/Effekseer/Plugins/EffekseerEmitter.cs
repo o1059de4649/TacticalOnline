@@ -18,6 +18,7 @@ public class EffekseerEmitter : MonoBehaviour
 	/// </summary>
 	public string effectName;
 
+   
 	/// <summary xml:lang="en">
 	/// Whether it does play the effect on Start()
 	/// </summary>
@@ -41,16 +42,20 @@ public class EffekseerEmitter : MonoBehaviour
 	/// 最後にPlayされたハンドル
 	/// </summary>
 	private EffekseerHandle? handle;
-	
-	/// <summary xml:lang="en">
-	/// Plays the effect.
-	/// <param name="name">Effect name</param>
-	/// </summary>
-	/// <summary xml:lang="ja">
-	/// エフェクトを再生
-	/// <param name="name">エフェクト名</param>
-	/// </summary>
-	public void Play(string name)
+
+    public bool _onDestroy = true;
+    public float destroy_time = 0;
+
+
+    /// <summary xml:lang="en">
+    /// Plays the effect.
+    /// <param name="name">Effect name</param>
+    /// </summary>
+    /// <summary xml:lang="ja">
+    /// エフェクトを再生
+    /// <param name="name">エフェクト名</param>
+    /// </summary>
+    public void Play(string name)
 	{
 		effectName = name;
 		Play();
@@ -68,7 +73,12 @@ public class EffekseerEmitter : MonoBehaviour
 		h.SetRotation(transform.rotation);
 		h.SetScale(transform.localScale);
 		handle = h;
-	}
+
+        if (_onDestroy)
+        {
+            Destroy(this.transform.parent.gameObject,destroy_time);
+        }
+    }
 	
 	/// <summary xml:lang="en">
 	/// Stops the played effect.

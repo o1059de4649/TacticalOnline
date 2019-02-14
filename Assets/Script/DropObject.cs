@@ -21,7 +21,7 @@ public class DropObject : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
     
     void Start()
     {
-        nowSprite = null;
+        nowSprite = iconImage.sprite;
 
        
         if (!PlayerPrefs.HasKey("SkillNote0")|| !PlayerPrefs.HasKey("SkillNote1")|| !PlayerPrefs.HasKey("SkillNote2")|| !PlayerPrefs.HasKey("SkillNote3"))
@@ -47,9 +47,13 @@ public class DropObject : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         iconImage.sprite = Resources.Load<Sprite>("SkillButton/" + splitSkill[number]);
     }
 
+
+
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if(pointerEventData.pointerDrag == null) return;
+        nowSprite = iconImage.sprite;
+
+        if (pointerEventData.pointerDrag == null) return;
         Image droppedImage = pointerEventData.pointerDrag.GetComponent<Image>();
         iconImage.sprite = droppedImage.sprite;
         iconImage.color = Vector4.one * 0.6f;
@@ -57,7 +61,11 @@ public class DropObject : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        if(pointerEventData.pointerDrag == null) return;
+        if(pointerEventData.pointerDrag == null)
+        {
+            return;
+        }
+            
         iconImage.sprite = nowSprite;
         if(nowSprite == null)
             iconImage.color = Vector4.zero;

@@ -33,11 +33,17 @@ using UnityStandardAssets.CrossPlatformInput;
     public float _push_power,_push_time;
 
     public Slider hpSlider,mpSlider;
-        // Start is called before the first frame update
-        void Start()
+
+    private void Awake()
+    {
+        player_camera = GetComponentInChildren<Camera>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
         {
         anim = GetComponentInChildren<Animator>();
-        player_camera = GetComponentInChildren<Camera>();
+
             rb = GetComponent<Rigidbody>();
             j_walk = GameObject.Find("DualTouchControls").GetComponentInChildren<JoystickWalk>();
         _runSpeed = 5;
@@ -93,10 +99,10 @@ using UnityStandardAssets.CrossPlatformInput;
 
 
         //移動スキル全般の処理
-        if (_animatorStateInfo.IsName("Base Layer.Sting")|| _animatorStateInfo.IsName("Base Layer.GroundAttack") || _animatorStateInfo.IsName("Base Layer.PushDash"))
+        if (_animatorStateInfo.IsName("Base Layer.Sting") || _animatorStateInfo.IsName("Base Layer.GroundAttack") || _animatorStateInfo.IsName("Base Layer.PushDash"))
         {
             _push_time -= Time.deltaTime;
-            if (_push_time <= 0)
+            if (_push_time < 0)
             {
                 _push_time = 0;
                 rb.velocity = new Vector3(0,rb.velocity.y,0);
@@ -107,8 +113,14 @@ using UnityStandardAssets.CrossPlatformInput;
         }
 
         //特定の時、動けないreturn
-        if (isSkillMoving|| isStun|| _animatorStateInfo.IsName("Base Layer.Fall"))
+        if (isSkillMoving|| isStun|| _animatorStateInfo.IsName("Base Layer.Fall") || _animatorStateInfo.IsTag("AttackSkill"))
         {
+            if (_animatorStateInfo.IsName("Base Layer.Sting") || _animatorStateInfo.IsName("Base Layer.GroundAttack"))
+            {
+                return;
+            }
+
+           rb.velocity = new Vector3(0, rb.velocity.y, 0);
             return;
         }
 
@@ -336,12 +348,12 @@ using UnityStandardAssets.CrossPlatformInput;
 
     public void ForwardPushRB(float _push_power)
     {
-        
-       
-        //rb.AddForce(transform.forward * _push_power , ForceMode.Force);
 
+
+        //rb.AddForce(transform.forward * _push_power , ForceMode.Force);
+       
         // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
-        rb.velocity = transform.forward * _push_power + transform.up * -1;
+        rb.velocity = transform.forward * _push_power;
 
        
     }

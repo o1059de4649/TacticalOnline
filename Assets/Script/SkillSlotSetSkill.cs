@@ -118,12 +118,13 @@ splitSkill[0] == null || splitSkill[1] == null || splitSkill[2] == null || split
 
         }
 
-        //既存オブジェクト削除
-        for (int p = 0; p < 16; p++)
-        {
-            Destroy(_pre_prefab[p]);
+        if (_pre_prefab[15]) {
+            //既存オブジェクト削除
+            for (int p = 0; p < 16; p++)
+            {
+                Destroy(_pre_prefab[p]);
+            }
         }
-
         //新規オブジェクト作成
         for (int i = 0; i < 16;i++)
         {
@@ -169,6 +170,11 @@ splitSkill[0] == null || splitSkill[1] == null || splitSkill[2] == null || split
 
        
 
+    }
+
+    public void DeleteData()
+    {
+        PlayerPrefs.DeleteAll();
     }
 
 }

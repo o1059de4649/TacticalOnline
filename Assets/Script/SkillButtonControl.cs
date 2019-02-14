@@ -8,12 +8,15 @@ public class SkillButtonControl : MonoBehaviour,IPointerClickHandler
 {
    public CommandPlayer commandPlayer;
     public MovePlayer movePlayer;
+
+    public float _button_hideTime;
     // Start is called before the first frame update
     void Start()
     {
         this.gameObject.name = this.gameObject.name.Replace("(Clone)", "");
         commandPlayer = GetComponentInParent<CommandPlayer>();
         movePlayer = GetComponentInParent<MovePlayer>();
+        _button_hideTime = 0.5f;
     }
 
     // Update is called once per frame
@@ -31,35 +34,47 @@ public class SkillButtonControl : MonoBehaviour,IPointerClickHandler
 
         if (this.gameObject.name == "SmashButton")
         {
-            commandPlayer.Smash();
-           this.gameObject.SetActive(false);
-            Invoke("SetAcyiveOn",5);
+            commandPlayer.SkillAttack(0);
+            Invoke("SetActiveOff", _button_hideTime);
+            Invoke("SetActiveOn",5);
         }
 
         if (this.gameObject.name == "UpperCutButton")
         {
             commandPlayer.UpperCutSmash();
-            this.gameObject.SetActive(false);
-            Invoke("SetAcyiveOn", 5);
+            Invoke("SetActiveOff", _button_hideTime);
+            Invoke("SetActiveOn", 5);
         }
 
         if (this.gameObject.name == "StingButton")
         {
-            commandPlayer.Stinger();
-            this.gameObject.SetActive(false);
-            Invoke("SetAcyiveOn", 5);
+            commandPlayer.SkillAttack(1);
+            Invoke("SetActiveOff", _button_hideTime);
+            Invoke("SetActiveOn", 5);
         }
 
         if (this.gameObject.name == "GroundButton")
         {
-            commandPlayer.GroundAttack();
-            this.gameObject.SetActive(false);
-            Invoke("SetAcyiveOn", 5);
+            commandPlayer.SkillAttack(2);
+            Invoke("SetActiveOff", _button_hideTime);
+            Invoke("SetActiveOn", 5);
+        }
+
+        if (this.gameObject.name == "FireWaveButton")
+        {
+            commandPlayer.SkillAttack(3);
+            Invoke("SetActiveOff", _button_hideTime);
+            Invoke("SetActiveOn", 5);
         }
 
     }
 
-    void SetAcyiveOn()
+    void SetActiveOff()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    void SetActiveOn()
     {
         this.gameObject.SetActive(true);
     }

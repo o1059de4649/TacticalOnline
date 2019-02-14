@@ -5,6 +5,8 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class CommandPlayer : MonoBehaviour
 {
+    public SkillData[] skilldata;
+
     public Animator animator;
    AnimatorStateInfo _animatorStateInfo;
     public MovePlayer movePlayer;
@@ -13,11 +15,34 @@ public class CommandPlayer : MonoBehaviour
     public float _skill_up_addForce_Power;
     public BoxCollider _sword_col;
     public SwordControl swordControl;
-    Vector3 sword_col_vector;
+    Vector3 sword_col_vector,sword_position;
 
     public bool isPush = false;
 
     public GameObject[] effekseer_obj;
+
+    [System.Serializable]
+    public class SkillData
+    {
+        public string skill_name_forAnim;
+       public bool isStrongSkill;
+       public bool isGroundSkill;
+       public float up_power;
+       public float recast_time;
+        public float sword_OnTime;
+        public float sword_OffTime;
+
+        public float push_power;
+        public float push_time;
+
+
+        public Vector3 sword_size;
+        public Vector3 sword_pos;
+
+        public float _mp;
+
+
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +53,7 @@ public class CommandPlayer : MonoBehaviour
         swordControl = this.transform.GetComponentInChildren<SwordControl>();
        _sword_col = swordControl.gameObject.GetComponent<BoxCollider>();
         sword_col_vector = _sword_col.size;
+        sword_position = _sword_col.center;
     }
 
     // Update is called once per frame
@@ -65,29 +91,42 @@ public class CommandPlayer : MonoBehaviour
 
     }
 
-    public void Smash()
+    public void SkillAttack(int skillnumber)
     {
+        //スキルナンバー選定、スキルの特定
+        for (int i = 0;i < skilldata.Length ;i++)
+        {
+            if (this.gameObject.name == skilldata[i] + "Button")
+            {
+                skillnumber = i;
+            }
+        }
+        
+        //スキル使用制限
         if (_animatorStateInfo.IsTag("Damage")  || movePlayer.isSkillMoving || _animatorStateInfo.IsName("Base Layer.PushDash"))
         {
             return;
         }
-        //打ち上げ威力と打ち上げ属性
-        swordControl._up_Power = 200;
-        swordControl.isStrongSkill = false;
-        swordControl.isGroundSkill = false;
 
-        if (_smash_recast_time < 1)
+        //打ち上げ威力と打ち上げ属性
+        swordControl._up_Power = skilldata[skillnumber].up_power;
+        swordControl.isStrongSkill = skilldata[skillnumber].isStrongSkill;
+        swordControl.isGroundSkill = skilldata[skillnumber].isGroundSkill;
+
+        if (_smash_recast_time < skilldata[skillnumber].recast_time)
         {
             return;
         }
-        _sword_col.size *= 1.5f;
+        _sword_col.size += skilldata[skillnumber].sword_size;
         _smash_recast_time = 0;
-        animator.SetTrigger("Smash");
-        _sword_col.enabled = true;
+        animator.SetTrigger(skilldata[skillnumber].skill_name_forAnim);
+        Invoke("SwordColOn", skilldata[skillnumber].sword_OnTime);
+        Invoke("SwordColOff", skilldata[skillnumber].sword_OffTime);
 
-        Invoke("SwordColOff",0.7f);
+        movePlayer._mp -= skilldata[skillnumber]._mp;
 
-        movePlayer._mp -= 50;
+        movePlayer._push_power = skilldata[skillnumber].push_power;
+        movePlayer._push_time = skilldata[skillnumber].push_time;
 
     }
 
@@ -107,9 +146,10 @@ public class CommandPlayer : MonoBehaviour
             return;
         }
         _upperCutSmash_recast_time = 0;
-        animator.SetTrigger("UpperCutSmash");
+        animator.SetTrigger("UpperCut");
         _sword_col.enabled = true;
-        _sword_col.size *= 2.0f;
+        _sword_col.size *= 2;
+       
         
         Invoke("SwordColOff", 0.7f);
 
@@ -176,22 +216,31 @@ public class CommandPlayer : MonoBehaviour
 
         _groundAttack_recast_time = 0;
         animator.SetTrigger("GroundAttack");
-        _sword_col.enabled = true;
-        _sword_col.size *= 2.0f;
+        Invoke("SwordColOn", 0.4f);
+
+        _sword_col.size += new Vector3(6, 0, 0);
+        _sword_col.size *= 1.5f;
+        _sword_col.center += new Vector3(-6,0,0);
 
         Invoke("SwordColOff", 0.7f);
 
         movePlayer.SkillMovingOn(0.5f);
 
         movePlayer._mp -= 80;
-        Instantiate(effekseer_obj[1], this.transform.position, Quaternion.identity);
+       
     }
 
     public void SwordColOff()
     {
+        _sword_col.center = sword_position; 
         _sword_col.size = sword_col_vector;
         _sword_col.enabled = false;
 
+    }
+
+    public void SwordColOn()
+    {
+        _sword_col.enabled = true;
     }
 
 }

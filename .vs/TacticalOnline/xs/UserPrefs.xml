@@ -1,10 +1,13 @@
 ﻿<Properties StartupConfiguration="{62AC5CB1-EDA0-FD20-E6B8-488CAC79EBE1}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SkillSlotSetSkill.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/OrdosFX/Magic Slashes FX/Scripts/AnimationEventEffects.cs">
     <Files>
       <File FileName="Assets/Script/OptionControl.cs" Line="44" Column="20" />
       <File FileName="Assets/Script/DropObject.cs" Line="26" Column="8" />
-      <File FileName="Assets/Script/SkillSlotSetSkill.cs" Line="31" Column="5" />
+      <File FileName="Assets/Script/SkillSlotSetSkill.cs" Line="31" Column="1" />
       <File FileName="Assets/Script/SkillButtonControl.cs" Line="21" Column="6" />
+      <File FileName="Assets/Script/MovePlayer.cs" Line="39" Column="58" />
+      <File FileName="Assets/OrdosFX/Magic Slashes FX/Scripts/AnimationEventEffects.cs" Line="61" Column="1" />
+      <File FileName="Assets/Script/CommandPlayer.cs" Line="187" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
