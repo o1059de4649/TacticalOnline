@@ -19,7 +19,7 @@ public class CameraControll : MonoBehaviour
     void Update()
     {
            
-            this.transform.localPosition = new Vector3(0.5f, 0, -7f);
+           // this.transform.localPosition = new Vector3(0.5f, 0, -7f);
 
 
         
