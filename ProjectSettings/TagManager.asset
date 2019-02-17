@@ -8,6 +8,13 @@ TagManager:
   - Sword
   - PlayerBody
   - Plane
+  - Head
+  - Bullet
+  - MyPlayerBody
+  - Team1Body
+  - Team2Body
+  - Team1Player
+  - Team2Player
   layers:
   - Default
   - TransparentFX

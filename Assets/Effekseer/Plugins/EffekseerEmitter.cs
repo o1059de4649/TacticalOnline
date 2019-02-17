@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using Photon.Pun;
 
 /// <summary xml:lang="en">
 /// A emitter of the Effekseer effect
@@ -76,10 +77,16 @@ public class EffekseerEmitter : MonoBehaviour
 
         if (_onDestroy)
         {
-            Destroy(this.transform.parent.gameObject,destroy_time);
+            Destroy(this.transform.parent.gameObject, destroy_time);
+            //GetComponent<PhotonView>().RPC("OnDestroySelf",PhotonTargets.All);
         }
     }
 	
+    [PunRPC]
+    public void OnDestroySelf()
+    {
+        Destroy(this.transform.parent.gameObject, destroy_time);
+    }
 	/// <summary xml:lang="en">
 	/// Stops the played effect.
 	/// All nodes will be destroyed.

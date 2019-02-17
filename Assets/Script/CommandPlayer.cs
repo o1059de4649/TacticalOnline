@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class CommandPlayer : MonoBehaviour
@@ -20,6 +21,9 @@ public class CommandPlayer : MonoBehaviour
     public bool isPush = false;
 
     public GameObject[] effekseer_obj;
+    private IEnumerator _IEnumerator;
+    PhotonView photonView;
+
 
     [System.Serializable]
     public class SkillData
@@ -41,7 +45,10 @@ public class CommandPlayer : MonoBehaviour
 
         public float _mp;
 
-
+        public bool isInstantiate;
+        public Transform effect_position;
+        public GameObject instantiateObj;
+        public float delay_instantiate_time;
     }
     // Start is called before the first frame update
     void Start()
@@ -54,6 +61,9 @@ public class CommandPlayer : MonoBehaviour
        _sword_col = swordControl.gameObject.GetComponent<BoxCollider>();
         sword_col_vector = _sword_col.size;
         sword_position = _sword_col.center;
+
+        photonView = GetComponent<PhotonView>();
+        
     }
 
     // Update is called once per frame
@@ -101,9 +111,9 @@ public class CommandPlayer : MonoBehaviour
                 skillnumber = i;
             }
         }
-        
+
         //スキル使用制限
-        if (_animatorStateInfo.IsTag("Damage")  || movePlayer.isSkillMoving || _animatorStateInfo.IsName("Base Layer.PushDash"))
+        if (_animatorStateInfo.IsTag("Damage") || movePlayer.isSkillMoving || _animatorStateInfo.IsName("Base Layer.PushDash") || movePlayer._mp < skilldata[skillnumber]._mp)
         {
             return;
         }
@@ -120,15 +130,41 @@ public class CommandPlayer : MonoBehaviour
         _sword_col.size += skilldata[skillnumber].sword_size;
         _smash_recast_time = 0;
         animator.SetTrigger(skilldata[skillnumber].skill_name_forAnim);
-        Invoke("SwordColOn", skilldata[skillnumber].sword_OnTime);
-        Invoke("SwordColOff", skilldata[skillnumber].sword_OffTime);
+       
 
         movePlayer._mp -= skilldata[skillnumber]._mp;
 
         movePlayer._push_power = skilldata[skillnumber].push_power;
         movePlayer._push_time = skilldata[skillnumber].push_time;
 
+        if (skilldata[skillnumber].isInstantiate)
+        {
+            
+            _IEnumerator = Effects(skilldata[skillnumber].delay_instantiate_time, skillnumber);
+            StartCoroutine(_IEnumerator);
+        }
+        else
+        {
+            //剣の当たり判定許可
+            photonView.RPC("SwordColliderPun", RpcTarget.All,skillnumber);
+        }
+
     }
+
+    public IEnumerator Effects(float wait_time, int skillnumber)
+    {
+        yield return new WaitForSeconds(wait_time);
+
+        GameObject effect_obj = PhotonNetwork.Instantiate(skilldata[skillnumber].skill_name_forAnim, skilldata[skillnumber].effect_position.position, Quaternion.identity,0);
+       // effect_obj.GetComponentInChildren<SwordControl>()._teamNumber = movePlayer._teamNumber;
+
+        //effect_obj.AddComponent<DestroyObjectSelf>();
+    }
+
+    
+
+
+
 
     public void UpperCutSmash()
     {
@@ -159,75 +195,10 @@ public class CommandPlayer : MonoBehaviour
         Instantiate(effekseer_obj[0],this.transform.position,Quaternion.identity);
     }
 
-    public void Stinger()
-    {
-        if (_animatorStateInfo.IsTag("Damage") || movePlayer.isSkillMoving || _animatorStateInfo.IsName("Base Layer.PushDash"))
-        {
-            return;
-        }
-        //打ち上げ威力と打ち上げ属性
-        swordControl._up_Power = 150;
-        swordControl.isStrongSkill = false;
-        swordControl.isGroundSkill = false;
-
-        if (_sting_recast_time < 1)
-        {
-            return;
-        }
-
-        //推進力
-         movePlayer._push_power = 40;
-         movePlayer._push_time = 0.1f;
-       // movePlayer.ForwardPushPosition(4);
-
-        _sting_recast_time = 0;
-        animator.SetTrigger("Sting");
-        _sword_col.enabled = true;
-        _sword_col.size *= 2.0f;
-
-        Invoke("SwordColOff", 0.7f);
-
-        movePlayer.SkillMovingOn(0.5f);
-
-        movePlayer._mp -= 40;
-
-    }
-
-    public void GroundAttack()
-    {
-        if (_animatorStateInfo.IsTag("Damage") || movePlayer.isSkillMoving || _animatorStateInfo.IsName("Base Layer.PushDash"))
-        {
-            return;
-        }
-        //打ち上げ威力と打ち上げ属性
-        swordControl._up_Power = 400;
-        swordControl.isStrongSkill = true;
-        swordControl.isGroundSkill = true;
-
-        if (_groundAttack_recast_time < 1)
-        {
-            return;
-        }
-
-        //推進力
-        movePlayer._push_power = 20;
-        movePlayer._push_time = 0.1f;
-        // movePlayer.ForwardPushPosition(4);
-
-        _groundAttack_recast_time = 0;
-        animator.SetTrigger("GroundAttack");
-        Invoke("SwordColOn", 0.4f);
-
-        _sword_col.size += new Vector3(6, 0, 0);
-        _sword_col.size *= 1.5f;
-        _sword_col.center += new Vector3(-6,0,0);
-
-        Invoke("SwordColOff", 0.7f);
-
-        movePlayer.SkillMovingOn(0.5f);
-
-        movePlayer._mp -= 80;
-       
+    [PunRPC]
+    public void SwordColliderPun(int skillnumber) {
+        Invoke("SwordColOn", skilldata[skillnumber].sword_OnTime);
+        Invoke("SwordColOff", skilldata[skillnumber].sword_OffTime);
     }
 
     public void SwordColOff()

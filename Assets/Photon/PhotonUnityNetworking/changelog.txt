@@ -1,5 +1,15 @@
 PUN 2 Change Log
 
+v2.7 (13. February 2019)
+Fixed: Offline mode. Custom properties are now set properly.
+Renamed: PhotonNetwork.BackgroundTimeout is now PhotonNetwork.KeepAliveInBackground.
+Fixed: PhotonNetwork.KeepAliveInBackground now sets the ConnectionHandler.KeepAliveInBackground, which actually affects the background keep-alive.
+Fixed: A crash problem on Nintendo Switch. Setting a Thread.Name caused a crash in some Unity exports. We work around this by simply not naming internal threads.
+Updated: Photon3Unity3d.dll library to 4.1.2.9, rev4985.
+Photon Chat:
+    Added: Client API for Max Subscribers and Publish Subscribers features inside public channels.
+
+
 v2.6 (25th January 2019)
 Fixed: Offline custom properties are now set even if ExpectedProperties is set, as there is only one source for setting properties when in offline mode. 
 Fixed: Switching Offline mode off now properly cleans up room content.
@@ -30,7 +40,6 @@ Changed: ExecuteRpc() to not always create argument- and argument-type-list. Thi
 Changed: ExecuteRpc() check of arguments versus a method's parameters.
 Changed: RPC() to re-use the event-content Hashtable (and clear it instead of re-creating it every time).
 Updated: Photon3Unity3d.dll library to rev4954.
-
 
 v2.5 (20th November 2018)
 Fixed: The RoomOption CleanupCacheOnLeave is now correctly set per room (if set for creation of the room). This bug caused a server-side cleanup of Instantiate-events, buffered RPCs and other buffered events, despite a different setting in the options. This messed with a game's state, if you wanted to keep networked objects when players leave.

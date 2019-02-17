@@ -41,6 +41,10 @@ namespace Photon.Pun.Demo.Asteroids
         private Dictionary<string, GameObject> roomListEntries;
         private Dictionary<int, GameObject> playerListEntries;
 
+
+        public GameObject myplayer,loginUI;
+        public int _TeamNumber;
+        public GameObject start_Camera;
         #region UNITY
 
         public void Awake()
@@ -96,6 +100,16 @@ namespace Photon.Pun.Demo.Asteroids
             PhotonNetwork.CreateRoom(roomName, options, null);
         }
 
+        public void Team1Deside()
+        {
+            _TeamNumber = 1;
+        }
+
+        public void Team2Deside()
+        {
+            _TeamNumber = 2;
+        }
+
         public override void OnJoinedRoom()
         {
             SetActivePanel(InsideRoomPanel.name);
@@ -128,6 +142,27 @@ namespace Photon.Pun.Demo.Asteroids
                 {AsteroidsGame.PLAYER_LOADED_LEVEL, false}
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+
+            //カスタム箇所
+            GameObject.Find("DataBase").GetComponent<DataBaseScript>()._TeamNumber = _TeamNumber;
+
+            loginUI.SetActive(false);
+
+            myplayer = PhotonNetwork.Instantiate(
+
+           "Player",
+
+           new Vector3(0f, 3f, 0f),
+
+           Quaternion.identity,
+
+           0
+
+        );
+
+            myplayer.GetComponent<MovePlayer>()._teamNumber = _TeamNumber;
+            start_Camera.GetComponent<Camera>().enabled = false;
+            //カスタム箇所
         }
 
         public override void OnLeftRoom()

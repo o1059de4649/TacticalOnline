@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
+using Photon.Realtime;
+using Photon;
+using Photon.Pun;
 
-
-    public class MovePlayer : MonoBehaviour
-    {
+public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
+{
     public float _maxLife = 14500;
     public float _life = 14500;
 
@@ -14,25 +16,53 @@ using UnityStandardAssets.CrossPlatformInput;
     public float _mp = 4500;
 
     public float v;
-        public float h;
-        public float _runSpeed,animSpeed = 1.5f,_moveTime_PushDashing,_up_Power_save,ground_time = 0,_gravity;
-    public bool isPushing = false,isStun = false,isSkillMoving = false,isFallStartToEnd = false,isGroundDown = false,isGround = true;
-        public Rigidbody rb;
+    public float h;
+    public float _runSpeed, animSpeed = 1.5f, _moveTime_PushDashing, _up_Power_save, ground_time = 0, _gravity;
+    public bool isPushing = false, isStun = false, isSkillMoving = false, isFallStartToEnd = false, isGroundDown = false, isGround = true;
+    public Rigidbody rb;
 
 
-        Vector3 v_velocity,h_velocity;
-        public JoystickWalk j_walk;
-        bool isDrag;
-       public Animator anim;
-   public Camera player_camera;
+    Vector3 v_velocity, h_velocity;
+    public JoystickWalk j_walk;
+    bool isDrag;
+    public Animator anim;
+    public Camera player_camera;
     public Vector3 moveForward;
 
-    int _state_walk,_state_fall;
-   public AnimatorStateInfo _animatorStateInfo;
+    int _state_walk, _state_fall;
+    public AnimatorStateInfo _animatorStateInfo;
 
-    public float _push_power,_push_time;
+    public float _push_power, _push_time;
 
-    public Slider hpSlider,mpSlider;
+    public Slider hpSlider, mpSlider;
+
+    //Tagの選定
+    public PhotonView photonView;
+    public GameObject player_body;
+
+    public int _teamNumber = 0;
+
+   public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+           
+            stream.SendNext(_maxLife);
+            stream.SendNext(_life);
+            stream.SendNext(_maxMp);
+            stream.SendNext(_mp);
+        }
+        else
+        {
+            
+            _maxLife = (float)stream.ReceiveNext();
+            _life = (float)stream.ReceiveNext();
+            _maxMp = (float)stream.ReceiveNext();
+            _mp = (float)stream.ReceiveNext();
+
+          
+        }
+    }
 
     private void Awake()
     {
@@ -41,11 +71,12 @@ using UnityStandardAssets.CrossPlatformInput;
 
     // Start is called before the first frame update
     void Start()
-        {
+    {
+        this.gameObject.name = this.gameObject.name.Replace("(Clone)", "");
         anim = GetComponentInChildren<Animator>();
 
-            rb = GetComponent<Rigidbody>();
-            j_walk = GameObject.Find("DualTouchControls").GetComponentInChildren<JoystickWalk>();
+        rb = GetComponent<Rigidbody>();
+        j_walk = GameObject.Find("DualTouchControls").GetComponentInChildren<JoystickWalk>();
         _runSpeed = 5;
         _moveTime_PushDashing = 0;
 
@@ -53,6 +84,28 @@ using UnityStandardAssets.CrossPlatformInput;
         _mp = _maxMp;
         _gravity = Physics.gravity.y;
 
+        if (photonView.IsMine)
+        {
+            this.gameObject.name = "MyPlayer";
+            photonView.RPC("DesideTag", RpcTarget.AllViaServer,_teamNumber);
+
+            player_camera.enabled = true;
+            this.gameObject.GetComponentInChildren<Canvas>().enabled = true;
+
+            
+        }
+
+
+    }
+
+    [PunRPC]
+    public void DesideTag(int _TeamNumber){
+        GetComponentInChildren<SwordControl>()._teamNumber = _TeamNumber;
+        if (_teamNumber == _TeamNumber)
+        {
+            this.gameObject.tag = "Team"+_TeamNumber.ToString()+"Player";
+            player_body.gameObject.tag = "Team"+ _TeamNumber.ToString() +"Body";
+        }
     }
 
     private void FixedUpdate()
@@ -64,14 +117,23 @@ using UnityStandardAssets.CrossPlatformInput;
     void Update()
         {
 
+        //他のプレイヤー
+        if (!photonView.IsMine) return;
+        
+
 
         //State管理
         _animatorStateInfo = this.anim.GetCurrentAnimatorStateInfo(0);
-        _mp += 20;
+        _mp += Time.deltaTime * _maxMp * 0.02f;
         //mp
         if (_mp <= 0)
         {
             _mp = 0;
+        }
+
+        if (_mp > _maxMp)
+        {
+            _mp = _maxMp;
         }
 
         hpSlider.maxValue = _maxLife;
@@ -99,8 +161,10 @@ using UnityStandardAssets.CrossPlatformInput;
 
 
         //移動スキル全般の処理
-        if (_animatorStateInfo.IsName("Base Layer.Sting") || _animatorStateInfo.IsName("Base Layer.GroundAttack") || _animatorStateInfo.IsName("Base Layer.PushDash"))
+        if (_animatorStateInfo.IsName("Base Layer.Sting") || _animatorStateInfo.IsName("Base Layer.GroundAttack") || _animatorStateInfo.IsName("Base Layer.PushDash")||
+            _animatorStateInfo.IsName("Base Layer.GroundFire") || _animatorStateInfo.IsName("Base Layer.IceSpike") || _animatorStateInfo.IsName("Base Layer.GroundMana"))
         {
+            
             _push_time -= Time.deltaTime;
             if (_push_time < 0)
             {
@@ -115,7 +179,9 @@ using UnityStandardAssets.CrossPlatformInput;
         //特定の時、動けないreturn
         if (isSkillMoving|| isStun|| _animatorStateInfo.IsName("Base Layer.Fall") || _animatorStateInfo.IsTag("AttackSkill"))
         {
-            if (_animatorStateInfo.IsName("Base Layer.Sting") || _animatorStateInfo.IsName("Base Layer.GroundAttack"))
+            if (_animatorStateInfo.IsName("Base Layer.Sting") || _animatorStateInfo.IsName("Base Layer.GroundAttack") ||
+                _animatorStateInfo.IsName("Base Layer.GroundFire") || _animatorStateInfo.IsName("Base Layer.IceSpike")||
+                _animatorStateInfo.IsName("Base Layer.GroundMana"))
             {
                 return;
             }

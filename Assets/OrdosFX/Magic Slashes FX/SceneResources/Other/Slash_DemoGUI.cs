@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Runtime.Serialization.Formatters;
 
-public class Slash_DemoGUI : MonoBehaviour
+public class RFX4_DemoGUI : MonoBehaviour
 {
 	public GameObject[] Prefabs;
     public float[] ReactivationTimes;
@@ -16,7 +16,7 @@ public class Slash_DemoGUI : MonoBehaviour
 
     private int currentNomber;
 	private GameObject currentInstance;
-	 GUIStyle guiStyleHeader = new GUIStyle();
+	public GUIStyle guiStyleHeader = new GUIStyle();
     GUIStyle guiStyleHeaderMobile = new GUIStyle();
     float dpiScale;
    

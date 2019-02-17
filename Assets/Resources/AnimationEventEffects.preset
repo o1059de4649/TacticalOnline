@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AnimationEventEffects
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: b8e9d17796fd47c46976ba2f17284603,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.size
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[0].effect_name
+    value: Smash
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[0].StartPositionRotation
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[0].DestroyAfter
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[0].UseLocalPosition
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[1].effect_name
+    value: Ground
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[1].StartPositionRotation
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[1].DestroyAfter
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[1].UseLocalPosition
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[2].effect_name
+    value: StingEnergy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[2].StartPositionRotation
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[2].DestroyAfter
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[2].UseLocalPosition
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[3].effect_name
+    value: StingJump
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[3].StartPositionRotation
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[3].DestroyAfter
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[3].UseLocalPosition
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[4].effect_name
+    value: FireWave
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[4].StartPositionRotation
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[4].DestroyAfter
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[4].UseLocalPosition
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[5].effect_name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[5].StartPositionRotation
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[5].DestroyAfter
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Effects.Array.data[5].UseLocalPosition
+    value: 0
+    objectReference: {fileID: 0}

@@ -359,7 +359,11 @@ namespace Photon.Realtime
             this.coroutineMonoBehaviour = go.AddComponent<MonoBehaviourEmpty>();        // is defined below, as special case for Unity WegGL
             this.coroutineMonoBehaviour.StartCoroutine(this.RegionPingCoroutine());
             #else
+            #if UNITY_SWITCH
+            SupportClass.StartBackgroundCalls(this.RegionPingThreaded, 0);
+            #else
             SupportClass.StartBackgroundCalls(this.RegionPingThreaded, 0, "RegionPing_" + this.region.Code+"_"+this.region.Cluster);
+            #endif
             #endif
 
             return true;

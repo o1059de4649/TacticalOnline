@@ -1,0 +1,785 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CommandPlayer
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: bb0a7db11a7e240f2bc27362d8d309ca,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.size
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].skill_name_forAnim
+    value: Smash
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].isStrongSkill
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].isGroundSkill
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].up_power
+    value: 200
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].recast_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].sword_OnTime
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].sword_OffTime
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].push_power
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].push_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].sword_size.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].sword_size.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].sword_size.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].sword_pos.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].sword_pos.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].sword_pos.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0]._mp
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].isInstantiate
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].effect_position
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].instantiateObj
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[0].delay_instantiate_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].skill_name_forAnim
+    value: Sting
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].isStrongSkill
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].isGroundSkill
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].up_power
+    value: 200
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].recast_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].sword_OnTime
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].sword_OffTime
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].push_power
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].push_time
+    value: 0.12
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].sword_size.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].sword_size.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].sword_size.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].sword_pos.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].sword_pos.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].sword_pos.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1]._mp
+    value: 130
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].isInstantiate
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].effect_position
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].instantiateObj
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[1].delay_instantiate_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].skill_name_forAnim
+    value: Ground
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].isStrongSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].isGroundSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].up_power
+    value: 400
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].recast_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].sword_OnTime
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].sword_OffTime
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].push_power
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].push_time
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].sword_size.x
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].sword_size.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].sword_size.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].sword_pos.x
+    value: -6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].sword_pos.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].sword_pos.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2]._mp
+    value: 350
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].isInstantiate
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].effect_position
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].instantiateObj
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[2].delay_instantiate_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].skill_name_forAnim
+    value: FireWave
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].isStrongSkill
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].isGroundSkill
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].up_power
+    value: 200
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].recast_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].sword_OnTime
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].sword_OffTime
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].push_power
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].push_time
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].sword_size.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].sword_size.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].sword_size.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].sword_pos.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].sword_pos.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].sword_pos.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3]._mp
+    value: 130
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].isInstantiate
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].effect_position
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].instantiateObj
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[3].delay_instantiate_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].skill_name_forAnim
+    value: WaterDragon
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].isStrongSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].isGroundSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].up_power
+    value: 200
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].recast_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].sword_OnTime
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].sword_OffTime
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].push_power
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].push_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].sword_size.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].sword_size.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].sword_size.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].sword_pos.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].sword_pos.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].sword_pos.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4]._mp
+    value: 250
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].isInstantiate
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].effect_position
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].instantiateObj
+    value: 
+    objectReference: {fileID: 89476207664522500, guid: fe8b13a1946bda041824a411a8b1d2b4,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[4].delay_instantiate_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].skill_name_forAnim
+    value: FireDragon
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].isStrongSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].isGroundSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].up_power
+    value: 200
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].recast_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].sword_OnTime
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].sword_OffTime
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].push_power
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].push_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].sword_size.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].sword_size.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].sword_size.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].sword_pos.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].sword_pos.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].sword_pos.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5]._mp
+    value: 250
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].isInstantiate
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].effect_position
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].instantiateObj
+    value: 
+    objectReference: {fileID: 261, guid: c614bb3a98750eb41bd4930f3fce2f3f, type: 3}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[5].delay_instantiate_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].skill_name_forAnim
+    value: GroundFire
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].isStrongSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].isGroundSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].up_power
+    value: 200
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].recast_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].sword_OnTime
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].sword_OffTime
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].push_power
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].push_time
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].sword_size.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].sword_size.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].sword_size.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].sword_pos.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].sword_pos.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].sword_pos.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6]._mp
+    value: 500
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].isInstantiate
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].effect_position
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].instantiateObj
+    value: 
+    objectReference: {fileID: 772, guid: 6b3aa126cc2f5ef47bd3eed5fad338b7, type: 3}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[6].delay_instantiate_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].skill_name_forAnim
+    value: IceSpike
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].isStrongSkill
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].isGroundSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].up_power
+    value: 200
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].recast_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].sword_OnTime
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].sword_OffTime
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].push_power
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].push_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].sword_size.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].sword_size.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].sword_size.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].sword_pos.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].sword_pos.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].sword_pos.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7]._mp
+    value: 380
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].isInstantiate
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].effect_position
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].instantiateObj
+    value: 
+    objectReference: {fileID: 681, guid: b2e2fd1fd96661546b83da6cf62297f1, type: 3}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[7].delay_instantiate_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].skill_name_forAnim
+    value: GroundMana
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].isStrongSkill
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].isGroundSkill
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].up_power
+    value: 200
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].recast_time
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].sword_OnTime
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].sword_OffTime
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].push_power
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].push_time
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].sword_size.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].sword_size.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].sword_size.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].sword_pos.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].sword_pos.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].sword_pos.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8]._mp
+    value: 250
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].isInstantiate
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].effect_position
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].instantiateObj
+    value: 
+    objectReference: {fileID: 983, guid: a588f3e9e481a38429e4fa262b4287a7, type: 3}
+  - target: {fileID: 0}
+    propertyPath: skilldata.Array.data[8].delay_instantiate_time
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: animator
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: movePlayer
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _skill_up_addForce_Power
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _sword_col
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: swordControl
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: isPush
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: effekseer_obj.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: effekseer_obj.Array.data[0]
+    value: 
+    objectReference: {fileID: 8414450317909431586, guid: 3a0a9f6ccacc747ed84e7261ad90595a,
+      type: 3}

@@ -70,29 +70,29 @@ namespace ExitGames.Client.Photon.LoadBalancing
         [System.Diagnostics.Conditional("UNITY")]
         private void ConfigUnitySockets()
         {
-            #pragma warning disable 0162    // the library variant defines if we should use PUN's SocketUdp variant (at all)
-            if (PhotonPeer.NoSocket)
-            {
-                #if !UNITY_EDITOR && (UNITY_PS3 || UNITY_ANDROID)
-                this.SocketImplementationConfig[ConnectionProtocol.Udp] = typeof(SocketUdpNativeDynamic);
-                //PingImplementation = typeof(PingNativeDynamic);
-                #elif !UNITY_EDITOR && UNITY_IPHONE
-                this.SocketImplementationConfig[ConnectionProtocol.Udp] = typeof(SocketUdpNativeStatic);
-                PingImplementation = typeof(PingNativeStatic);
-                #elif !UNITY_EDITOR && (UNITY_WINRT)
-                // this automatically uses a separate assembly-file with Win8-style Socket usage (not possible in Editor)
-                #else
-                Type udpSocket = Type.GetType("ExitGames.Client.Photon.SocketUdp, Assembly-CSharp");
-                this.SocketImplementationConfig[ConnectionProtocol.Udp] = udpSocket;
-                if (udpSocket == null)
-                {
-                    #if UNITY
-                    UnityEngine.Debug.Log("Could not find a suitable C# socket class. This Photon3Unity3D.dll only supports native socket plugins.");
-                    #endif
-                }
-                #endif
-            }
-            #pragma warning restore 0162
+            //#pragma warning disable 0162    // the library variant defines if we should use PUN's SocketUdp variant (at all)
+            //if (PhotonPeer.NoSocket)
+            //{
+            //    #if !UNITY_EDITOR && (UNITY_PS3 || UNITY_ANDROID)
+            //    this.SocketImplementationConfig[ConnectionProtocol.Udp] = typeof(SocketUdpNativeDynamic);
+            //    PingImplementation = typeof(PingNativeDynamic);
+            //    #elif !UNITY_EDITOR && UNITY_IPHONE
+            //    this.SocketImplementationConfig[ConnectionProtocol.Udp] = typeof(SocketUdpNativeStatic);
+            //    PingImplementation = typeof(PingNativeStatic);
+            //    #elif !UNITY_EDITOR && (UNITY_WINRT)
+            //    // this automatically uses a separate assembly-file with Win8-style Socket usage (not possible in Editor)
+            //    #else
+            //    Type udpSocket = Type.GetType("ExitGames.Client.Photon.SocketUdp, Assembly-CSharp");
+            //    this.SocketImplementationConfig[ConnectionProtocol.Udp] = udpSocket;
+            //    if (udpSocket == null)
+            //    {
+            //        #if UNITY
+            //        UnityEngine.Debug.Log("Could not find a suitable C# socket class. This Photon3Unity3D.dll only supports native socket plugins.");
+            //        #endif
+            //    }
+            //    #endif
+            //}
+            //#pragma warning restore 0162
 
 
             PingImplementation = typeof(PingMono);

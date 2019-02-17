@@ -47,7 +47,10 @@ public class DropObject : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         iconImage.sprite = Resources.Load<Sprite>("SkillButton/" + splitSkill[number]);
     }
 
-
+    void Update()
+    {
+        skill_name = iconImage.sprite.name;
+    }
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {

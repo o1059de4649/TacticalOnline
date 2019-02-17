@@ -10,13 +10,15 @@ public class SkillButtonControl : MonoBehaviour,IPointerClickHandler
     public MovePlayer movePlayer;
 
     public float _button_hideTime;
+
+    public string[] skillname = { "Smash","Sting","Ground","FireWave","WaterDragon","FireDragon","GroundFire","IceSpike","GroundMana" };
     // Start is called before the first frame update
     void Start()
     {
         this.gameObject.name = this.gameObject.name.Replace("(Clone)", "");
         commandPlayer = GetComponentInParent<CommandPlayer>();
         movePlayer = GetComponentInParent<MovePlayer>();
-        _button_hideTime = 0.5f;
+        _button_hideTime = 0.1f;
     }
 
     // Update is called once per frame
@@ -27,42 +29,21 @@ public class SkillButtonControl : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        if (movePlayer._mp <= 0)
-        {
-            return;
-        }
+        if (movePlayer._animatorStateInfo.IsTag("AttackSkill")|| movePlayer._animatorStateInfo.IsTag("Damage")|| movePlayer._animatorStateInfo.IsTag("Teleport")) return;
 
-        if (this.gameObject.name == "SmashButton")
+        for (int i = 0;i < skillname.Length ;i++)
         {
-            commandPlayer.SkillAttack(0);
-            Invoke("SetActiveOff", _button_hideTime);
-            Invoke("SetActiveOn",5);
+            if (this.gameObject.name == skillname[i] + "Button" && movePlayer._mp > commandPlayer.skilldata[i]._mp)
+            {
+                commandPlayer.SkillAttack(i);
+                Invoke("SetActiveOff", _button_hideTime);
+                Invoke("SetActiveOn", 5);
+            }
         }
-
+       
         if (this.gameObject.name == "UpperCutButton")
         {
             commandPlayer.UpperCutSmash();
-            Invoke("SetActiveOff", _button_hideTime);
-            Invoke("SetActiveOn", 5);
-        }
-
-        if (this.gameObject.name == "StingButton")
-        {
-            commandPlayer.SkillAttack(1);
-            Invoke("SetActiveOff", _button_hideTime);
-            Invoke("SetActiveOn", 5);
-        }
-
-        if (this.gameObject.name == "GroundButton")
-        {
-            commandPlayer.SkillAttack(2);
-            Invoke("SetActiveOff", _button_hideTime);
-            Invoke("SetActiveOn", 5);
-        }
-
-        if (this.gameObject.name == "FireWaveButton")
-        {
-            commandPlayer.SkillAttack(3);
             Invoke("SetActiveOff", _button_hideTime);
             Invoke("SetActiveOn", 5);
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class AnimationEventEffects : MonoBehaviour {
     //public GameObject EffectPrefab;
@@ -10,14 +11,14 @@ public class AnimationEventEffects : MonoBehaviour {
     //public GameObject EffectPrefabWorldSpace;
     //public Transform EffectStartPositionWorld;
     //public float DestroyAfterWorld = 10;
-
+    public PhotonView photonView;
     public EffectInfo[] Effects;
 
     [System.Serializable]
 
     public class EffectInfo
     {
-        public GameObject Effect;
+        public string effect_name;
         public Transform StartPositionRotation;
         public float DestroyAfter = 10;
         public bool UseLocalPosition = true;
@@ -41,12 +42,17 @@ public class AnimationEventEffects : MonoBehaviour {
             
     void InstantiateEffect(int EffectNumber)
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         if(Effects == null || Effects.Length <= EffectNumber)
         {
             Debug.LogError("Incorrect effect number or effect is null");
         }
 
-        var instance = Instantiate(Effects[EffectNumber].Effect, Effects[EffectNumber].StartPositionRotation.position, Effects[EffectNumber].StartPositionRotation.rotation);
+        var instance = PhotonNetwork.Instantiate(Effects[EffectNumber].effect_name, Effects[EffectNumber].StartPositionRotation.position, Effects[EffectNumber].StartPositionRotation.rotation,0);
 
         if (Effects[EffectNumber].UseLocalPosition)
         {

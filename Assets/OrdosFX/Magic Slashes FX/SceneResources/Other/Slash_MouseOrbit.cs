@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Slash_MouseOrbit : MonoBehaviour
+public class RFX4_MouseOrbit : MonoBehaviour
 {
     public GameObject target;
     public float distance = 10.0f;

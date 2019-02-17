@@ -19,7 +19,7 @@ public class CameraControll : MonoBehaviour
     void Update()
     {
            
-            this.transform.localPosition = new Vector3(0.5f, 0, -2f);
+            this.transform.localPosition = new Vector3(0.5f, 0, -7f);
 
 
         
@@ -34,7 +34,7 @@ public class CameraControll : MonoBehaviour
 
             if (maincamera == null)
             {
-                maincamera = GameObject.FindWithTag("Player").transform.Find("CameraStork/MainCamera").gameObject;
+                maincamera = this.gameObject;
                 maincamera.GetComponent<TPSControll_y>().enabled = true;
             }
         

@@ -64,7 +64,7 @@ namespace Photon.Pun
     public static partial class PhotonNetwork
     {
         /// <summary>Version number of PUN. Used in the AppVersion, which separates your playerbase in matchmaking.</summary>
-        public const string PunVersion = "2.6";
+        public const string PunVersion = "2.7";
 
         /// <summary>Version number of your game. Setting this updates the AppVersion, which separates your playerbase in matchmaking.</summary>
         /// <remarks>
@@ -665,20 +665,19 @@ namespace Photon.Pun
         /// <summary>Used for Photon/PUN timing, as Time.time can't be called from Threads.</summary>
         private static readonly Stopwatch StartupStopwatch;
 
+
         /// <summary>
-        /// Defines how many seconds PUN keeps the connection, after Unity's OnApplicationPause(true) call. Default: 60 seconds.
+        /// Defines how many seconds PUN keeps the connection after Unity's OnApplicationPause(true) call. Default: 60 seconds.
         /// </summary>
         /// <remarks>
         /// It's best practice to disconnect inactive apps/connections after a while but to also allow users to take calls, etc..
-        /// We think a reasonable backgroung timeout is 60 seconds.
+        /// We think a reasonable background timeout is 60 seconds.
         ///
         /// To handle the timeout, implement: OnDisconnected(), as usual.
         /// Your application will "notice" the background disconnect when it becomes active again (running the Update() loop).
         ///
         /// If you need to separate this case from others, you need to track if the app was in the background
         /// (there is no special callback by PUN).
-        ///
-        /// A value below 0.1 seconds will disable this timeout (careful: connections can be kept indefinitely).
         ///
         ///
         /// Info:
@@ -690,10 +689,29 @@ namespace Photon.Pun
         /// In those cases, this value does not change anything, the app immediately loses connection in background.
         ///
         /// Unity's OnApplicationPause() callback is broken in some exports (Android) of some Unity versions.
-        /// Make sure OnApplicationPause() gets the callbacks you'd expect on the platform you target!
-        /// Check PhotonHandler.OnApplicationPause(bool pause), to see the implementation.
+        /// Make sure OnApplicationPause() gets the callbacks you expect on the platform you target!
+        /// Check PhotonHandler.OnApplicationPause(bool pause) to see the implementation.
         /// </remarks>
-        public static float BackgroundTimeout = 60.0f;
+        public static float KeepAliveInBackground
+        {
+            set
+            {
+                if (PhotonHandler.Instance != null)
+                {
+                    PhotonHandler.Instance.KeepAliveInBackground = (int)Mathf.Round(value * 1000.0f);
+                }
+            }
+
+            get { return PhotonHandler.Instance != null ? Mathf.Round(PhotonHandler.Instance.KeepAliveInBackground / 1000.0f) : 60.0f; }
+        }
+
+        [Obsolete("Use KeepAliveInBackground instead.")]
+        public static float BackgroundTimeout
+        {
+            set { KeepAliveInBackground = value; }
+            get { return KeepAliveInBackground; }
+        }
+
 
         /// <summary>
         /// Are we the master client?
