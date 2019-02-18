@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class SwordControl : MonoBehaviourPunCallbacks
+public class SwordControl : MonoBehaviourPunCallbacks,IPunObservable
 {
     // Start is called before the first frame update
     public float _power;
@@ -18,10 +18,13 @@ public class SwordControl : MonoBehaviourPunCallbacks
     public BoxCollider boxCollider;
 
     public int _teamNumber;
-
+    public bool isDragon = false;
    public PhotonView photonView;
+
+    DataBaseScript data;
     void Start()
     {
+        data = GameObject.Find("DataBase").GetComponent<DataBaseScript>();
         this.gameObject.name = this.gameObject.name.Replace("(Clone)", "");
 
         _power++;
@@ -39,7 +42,7 @@ public class SwordControl : MonoBehaviourPunCallbacks
 
         if (this.gameObject.GetComponent<DestroyObjectSelf>())
         {
-            if (this.gameObject.name =="WaterDragon"|| this.gameObject.name == "FireDragon" ) {
+            if (isDragon) {
                 photonView = GetComponentInParent<PhotonView>();
             }
             else
@@ -58,17 +61,17 @@ public class SwordControl : MonoBehaviourPunCallbacks
     [PunRPC]
     public void DesideTeamNumber()
     {
-        _teamNumber = GameObject.Find("DataBase").GetComponent<DataBaseScript>()._TeamNumber;
+        _teamNumber = data._TeamNumber;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        _teamNumber = data._TeamNumber;
     }
 
     //他プレイヤーとの判別子
-    /*
+    
    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -79,14 +82,13 @@ public class SwordControl : MonoBehaviourPunCallbacks
         {
             _teamNumber = (int)stream.ReceiveNext();
         }
-    }*/
+    }
 
             private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Team" + _teamNumber.ToString() + "Body")
-        {
-            return;
-        }
+        if (other.gameObject.tag == "Team" + _teamNumber.ToString() + "Body") return;
+        if (!PhotonNetwork.IsMasterClient) return;
+       
 
         if (other.gameObject.tag == "Team1Body"|| other.gameObject.tag == "Team2Body")
         {

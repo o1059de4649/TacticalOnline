@@ -19031,6 +19031,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 8562766116176581107}
+  - {fileID: 1214903724650326316}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -19070,6 +19071,7 @@ MonoBehaviour:
   offTime: 2
   boxCollider: {fileID: 7956760042118101101}
   _teamNumber: 0
+  isDragon: 0
   photonView: {fileID: 2711058949218510608}
 --- !u!65 &7956760042118101101
 BoxCollider:
@@ -19080,7 +19082,7 @@ BoxCollider:
   m_GameObject: {fileID: 1750851205}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 5, y: 1, z: 5}
   m_Center: {x: 0, y: 0, z: 0}

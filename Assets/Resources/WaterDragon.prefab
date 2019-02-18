@@ -4586,7 +4586,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3723}
   viewIdField: 0
-  InstantiationId: -1
+  InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &3723
 MonoBehaviour:
@@ -41712,6 +41712,7 @@ GameObject:
   - component: {fileID: 2200}
   - component: {fileID: 2885}
   - component: {fileID: 3717}
+  - component: {fileID: 1364957543569748323}
   m_Layer: 0
   m_Name: Dummy001
   m_TagString: Untagged
@@ -41744,7 +41745,7 @@ BoxCollider:
   m_GameObject: {fileID: 1125}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -41766,10 +41767,33 @@ MonoBehaviour:
   _up_Power: 450
   isEffect: 0
   onTime: 0
-  offTime: 0
+  offTime: 4
   boxCollider: {fileID: 2885}
   _teamNumber: 0
+  isDragon: 1
   photonView: {fileID: 3736}
+--- !u!114 &1364957543569748323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 3717}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1403
 GameObject:
   m_ObjectHideFlags: 0
@@ -46523,7 +46547,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3739}
   viewIdField: 0
-  InstantiationId: -1
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &3739
 MonoBehaviour:

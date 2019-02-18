@@ -2874,6 +2874,7 @@ MonoBehaviour:
   offTime: 0
   boxCollider: {fileID: 6271202008843699164}
   _teamNumber: 0
+  isDragon: 0
   photonView: {fileID: 5318167784580981532}
 --- !u!1 &5786104302942122761
 GameObject:
@@ -3892,11 +3893,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3352219271058128443}
+  - component: {fileID: 8761340496303100992}
   - component: {fileID: 5318167784580981532}
   - component: {fileID: 5792266609574965953}
   - component: {fileID: 5337403971444962879}
   - component: {fileID: 6810034659732877082}
-  - component: {fileID: 8761340496303100992}
   - component: {fileID: 5223005067402338373}
   - component: {fileID: 7712894594209905649}
   - component: {fileID: 7280471763909243662}
@@ -3930,6 +3931,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8761340496303100992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280471763909243660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98418475e7404c6ea5545641fa5e19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxLife: 14500
+  _life: 14500
+  _maxMp: 4500
+  _mp: 4500
+  v: 0
+  h: 0
+  _runSpeed: 0
+  animSpeed: 1.5
+  _moveTime_PushDashing: 0
+  _up_Power_save: 0
+  ground_time: 0
+  _gravity: 0
+  isPushing: 0
+  isStun: 0
+  isSkillMoving: 0
+  isFallStartToEnd: 0
+  isGroundDown: 0
+  isGround: 1
+  rb: {fileID: 0}
+  j_walk: {fileID: 0}
+  anim: {fileID: 0}
+  player_camera: {fileID: 0}
+  moveForward: {x: 0, y: 0, z: 0}
+  _push_power: 0
+  _push_time: 0
+  hpSlider: {fileID: 5826157331664163331}
+  mpSlider: {fileID: 2130654757405646440}
+  photonView: {fileID: 5318167784580981532}
+  player_body: {fileID: 6913875217189636479}
+  _teamNumber: 0
 --- !u!114 &5318167784580981532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3945,12 +3988,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 1
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 5792266609574965953}
-  - {fileID: 6810034659732877082}
   - {fileID: 8761340496303100992}
+  - {fileID: 6810034659732877082}
   viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
@@ -4057,48 +4100,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
---- !u!114 &8761340496303100992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7280471763909243660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98418475e7404c6ea5545641fa5e19e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxLife: 14500
-  _life: 14500
-  _maxMp: 4500
-  _mp: 4500
-  v: 0
-  h: 0
-  _runSpeed: 0
-  animSpeed: 1.5
-  _moveTime_PushDashing: 0
-  _up_Power_save: 0
-  ground_time: 0
-  _gravity: 0
-  isPushing: 0
-  isStun: 0
-  isSkillMoving: 0
-  isFallStartToEnd: 0
-  isGroundDown: 0
-  isGround: 1
-  rb: {fileID: 0}
-  j_walk: {fileID: 0}
-  anim: {fileID: 0}
-  player_camera: {fileID: 0}
-  moveForward: {x: 0, y: 0, z: 0}
-  _push_power: 0
-  _push_time: 0
-  hpSlider: {fileID: 5826157331664163331}
-  mpSlider: {fileID: 2130654757405646440}
-  photonView: {fileID: 5318167784580981532}
-  player_body: {fileID: 6913875217189636479}
-  _teamNumber: 0
 --- !u!114 &5223005067402338373
 MonoBehaviour:
   m_ObjectHideFlags: 0

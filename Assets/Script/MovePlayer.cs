@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 using Photon.Realtime;
 using Photon;
+using UnityEngine.EventSystems;
 using Photon.Pun;
 
 public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
@@ -51,6 +52,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext(_life);
             stream.SendNext(_maxMp);
             stream.SendNext(_mp);
+            stream.SendNext(_teamNumber);
         }
         else
         {
@@ -59,8 +61,8 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
             _life = (float)stream.ReceiveNext();
             _maxMp = (float)stream.ReceiveNext();
             _mp = (float)stream.ReceiveNext();
+            _teamNumber = (int)stream.ReceiveNext();
 
-          
         }
     }
 
@@ -87,7 +89,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             this.gameObject.name = "MyPlayer";
-            photonView.RPC("DesideTag", RpcTarget.AllBuffered,_teamNumber);
+           
 
             player_camera.enabled = true;
             this.gameObject.GetComponentInChildren<Canvas>().enabled = true;
@@ -98,15 +100,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
 
     }
 
-    [PunRPC]
-    public void DesideTag(int _TeamNumber){
-        GetComponentInChildren<SwordControl>()._teamNumber = _TeamNumber;
-        if (_teamNumber == _TeamNumber)
-        {
-            this.gameObject.tag = "Team"+_TeamNumber.ToString()+"Player";
-            player_body.gameObject.tag = "Team"+ _TeamNumber.ToString() +"Body";
-        }
-    }
+   
 
     private void FixedUpdate()
     {
@@ -117,6 +111,8 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
         {
 
+        this.gameObject.tag = "Team" + _teamNumber.ToString() + "Player";
+        player_body.gameObject.tag = "Team" + _teamNumber.ToString() + "Body";
         //他のプレイヤー
         if (!photonView.IsMine) return;
         
