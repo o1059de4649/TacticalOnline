@@ -33703,6 +33703,7 @@ GameObject:
   - component: {fileID: 1660889047354614143}
   - component: {fileID: 3651528889971370352}
   - component: {fileID: 3990561878063050280}
+  - component: {fileID: 5413751164738517189}
   m_Layer: 0
   m_Name: IceSpike
   m_TagString: Untagged
@@ -33788,15 +33789,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e1a9880e64421096be6cf5ec76210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 0
+  _power: 200
   isStrongSkill: 1
   isGroundSkill: 1
   _up_Power: 0
-  isEffect: 0
+  isEffect: 1
   onTime: 0
   offTime: 2
   boxCollider: {fileID: 309370124867431355}
   _teamNumber: 0
+  photonView: {fileID: 0}
 --- !u!114 &3651528889971370352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33816,7 +33818,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 3990561878063050280}
-  - {fileID: 1660889047354614143}
   viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
@@ -33835,6 +33836,19 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &5413751164738517189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384356379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb14143d68606b49854d13ed68e21be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destoy_time: 8
 --- !u!1 &1386459396
 GameObject:
   m_ObjectHideFlags: 0

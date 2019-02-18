@@ -87,7 +87,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             this.gameObject.name = "MyPlayer";
-            photonView.RPC("DesideTag", RpcTarget.AllViaServer,_teamNumber);
+            photonView.RPC("DesideTag", RpcTarget.AllBuffered,_teamNumber);
 
             player_camera.enabled = true;
             this.gameObject.GetComponentInChildren<Canvas>().enabled = true;

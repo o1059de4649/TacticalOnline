@@ -9902,6 +9902,7 @@ MonoBehaviour:
   offTime: 2
   boxCollider: {fileID: 2886}
   _teamNumber: 0
+  photonView: {fileID: 0}
 --- !u!65 &2886
 BoxCollider:
   m_ObjectHideFlags: 0

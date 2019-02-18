@@ -44211,8 +44211,9 @@ MonoBehaviour:
   isEffect: 0
   onTime: 0
   offTime: 0
-  boxCollider: {fileID: 0}
+  boxCollider: {fileID: 2882}
   _teamNumber: 0
+  photonView: {fileID: 3247}
 --- !u!65 &2882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44540,7 +44541,9 @@ MonoBehaviour:
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
   m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &677
 GameObject:
   m_ObjectHideFlags: 0

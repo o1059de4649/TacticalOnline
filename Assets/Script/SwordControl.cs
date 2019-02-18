@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class SwordControl : MonoBehaviourPunCallbacks,IPunObservable
+public class SwordControl : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
     public float _power;
@@ -18,10 +19,10 @@ public class SwordControl : MonoBehaviourPunCallbacks,IPunObservable
 
     public int _teamNumber;
 
- 
+   public PhotonView photonView;
     void Start()
     {
-        _teamNumber = GameObject.Find("DataBase").GetComponent<DataBaseScript>()._TeamNumber;
+        this.gameObject.name = this.gameObject.name.Replace("(Clone)", "");
 
         _power++;
 
@@ -30,6 +31,34 @@ public class SwordControl : MonoBehaviourPunCallbacks,IPunObservable
             Invoke("ColliderSwich",onTime);
             Invoke("ColliderSwich", offTime);
         }
+
+        if (this.gameObject.name == "SH_Sword_A")
+        {
+            return; 
+        }
+
+        if (this.gameObject.GetComponent<DestroyObjectSelf>())
+        {
+            if (this.gameObject.name =="WaterDragon"|| this.gameObject.name == "FireDragon" ) {
+                photonView = GetComponentInParent<PhotonView>();
+            }
+            else
+            {
+                photonView = GetComponent<PhotonView>();
+            }
+           
+        }
+
+        if (photonView.IsMine)
+        {
+            photonView.RPC("DesideTeamNumber", RpcTarget.AllBuffered);
+        }
+    }
+
+    [PunRPC]
+    public void DesideTeamNumber()
+    {
+        _teamNumber = GameObject.Find("DataBase").GetComponent<DataBaseScript>()._TeamNumber;
     }
 
     // Update is called once per frame
@@ -39,6 +68,7 @@ public class SwordControl : MonoBehaviourPunCallbacks,IPunObservable
     }
 
     //他プレイヤーとの判別子
+    /*
    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -49,7 +79,7 @@ public class SwordControl : MonoBehaviourPunCallbacks,IPunObservable
         {
             _teamNumber = (int)stream.ReceiveNext();
         }
-    }
+    }*/
 
             private void OnTriggerEnter(Collider other)
     {

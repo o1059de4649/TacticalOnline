@@ -41767,8 +41767,9 @@ MonoBehaviour:
   isEffect: 0
   onTime: 0
   offTime: 0
-  boxCollider: {fileID: 0}
+  boxCollider: {fileID: 2885}
   _teamNumber: 0
+  photonView: {fileID: 3736}
 --- !u!1 &1403
 GameObject:
   m_ObjectHideFlags: 0
