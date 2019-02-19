@@ -9894,7 +9894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e1a9880e64421096be6cf5ec76210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 500
+  _power: 1000
   isStrongSkill: 1
   isGroundSkill: 1
   _up_Power: 560
@@ -9931,6 +9931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destoy_time: 8
+  swordCon: {fileID: 0}
 --- !u!1 &785
 GameObject:
   m_ObjectHideFlags: 0

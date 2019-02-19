@@ -4616,6 +4616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destoy_time: 8
+  swordCon: {fileID: 3717}
 --- !u!1 &1092
 GameObject:
   m_ObjectHideFlags: 0
@@ -41761,13 +41762,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e1a9880e64421096be6cf5ec76210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 200
+  _power: 1000
   isStrongSkill: 1
   isGroundSkill: 0
   _up_Power: 450
-  isEffect: 0
+  isEffect: 1
   onTime: 0
-  offTime: 4
+  offTime: 7
   boxCollider: {fileID: 2885}
   _teamNumber: 0
   isDragon: 1

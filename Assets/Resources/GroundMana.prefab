@@ -19099,6 +19099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destoy_time: 8
+  swordCon: {fileID: 0}
 --- !u!1 &2041825230
 GameObject:
   m_ObjectHideFlags: 0

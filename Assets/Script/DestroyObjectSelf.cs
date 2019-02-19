@@ -6,10 +6,12 @@ using Photon.Pun;
 public class DestroyObjectSelf : MonoBehaviour
 {
     public float _destoy_time = 8;
+    public SwordControl swordCon;
     // Start is called before the first frame update
     void Start()
     {
-       // Destroy(this.gameObject, _destoy_time);
+        this.gameObject.name = this.gameObject.name.Replace("(Clone)", "");
+        // Destroy(this.gameObject, _destoy_time);
         GetComponent<PhotonView>().RPC("OnDestroySelf",RpcTarget.AllViaServer,_destoy_time);
     }
 

@@ -31,6 +31,7 @@ public class CommandPlayer : MonoBehaviour
         public string skill_name_forAnim;
        public bool isStrongSkill;
        public bool isGroundSkill;
+        public float _swordPower;
        public float up_power;
        public float recast_time;
         public float sword_OnTime;
@@ -123,6 +124,8 @@ public class CommandPlayer : MonoBehaviour
         swordControl.isStrongSkill = skilldata[skillnumber].isStrongSkill;
         swordControl.isGroundSkill = skilldata[skillnumber].isGroundSkill;
 
+        
+
         if (_smash_recast_time < skilldata[skillnumber].recast_time)
         {
             return;
@@ -147,6 +150,7 @@ public class CommandPlayer : MonoBehaviour
         {
             //剣の当たり判定許可
             photonView.RPC("SwordColliderPun", RpcTarget.All,skillnumber);
+            swordControl._power = skilldata[skillnumber]._swordPower;
         }
 
     }
@@ -156,7 +160,16 @@ public class CommandPlayer : MonoBehaviour
         yield return new WaitForSeconds(wait_time);
 
         GameObject effect_obj = PhotonNetwork.Instantiate(skilldata[skillnumber].skill_name_forAnim, skilldata[skillnumber].effect_position.position, Quaternion.identity,0);
-       // effect_obj.GetComponentInChildren<SwordControl>()._teamNumber = movePlayer._teamNumber;
+        effect_obj.gameObject.name =effect_obj.gameObject.name.Replace("(Clone)", "");
+        if (effect_obj.name == "WaterDragon"||effect_obj.name == "FireDragon")
+        {
+            effect_obj.GetComponent<DestroyObjectSelf>().swordCon._teamNumber = movePlayer._teamNumber;
+        }
+        else
+        {
+            effect_obj.GetComponent<SwordControl>()._teamNumber = movePlayer._teamNumber;
+        }
+       
 
         //effect_obj.AddComponent<DestroyObjectSelf>();
     }

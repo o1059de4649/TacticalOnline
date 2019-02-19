@@ -36,7 +36,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
     public float _push_power, _push_time;
 
     public Slider hpSlider, mpSlider;
-
+    public Text hptext,mptext;
     //Tagの選定
     public PhotonView photonView;
     public GameObject player_body;
@@ -62,7 +62,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
             _maxMp = (float)stream.ReceiveNext();
             _mp = (float)stream.ReceiveNext();
             _teamNumber = (int)stream.ReceiveNext();
-
+            
         }
     }
 
@@ -115,7 +115,22 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
         player_body.gameObject.tag = "Team" + _teamNumber.ToString() + "Body";
         //他のプレイヤー
         if (!photonView.IsMine) return;
-        
+
+        //死亡処理
+        if (_life <= 0) {
+            _life = _maxLife;
+            transform.position = GameObject.Find("Team" + _teamNumber.ToString() +"RespawnPos").gameObject.transform.position;
+
+            if (this.gameObject.tag == "Team1Player") {
+                GameObject.Find("DataBase").GetComponent<DataBaseScript>()._team2Point++;
+            }
+            if (this.gameObject.tag == "Team2Player")
+            {
+                GameObject.Find("DataBase").GetComponent<DataBaseScript>()._team1Point++;
+            }
+
+            return;
+        }
 
 
         //State管理
@@ -136,6 +151,9 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
         hpSlider.value = _life;
         mpSlider.maxValue = _maxMp;
         mpSlider.value = _mp;
+
+        hptext.text = _life.ToString() +"/"+ _maxLife.ToString();
+        mptext.text = _mp.ToString() + "/" + _maxMp.ToString();
 
         //起き上がり処理
         if (ground_time <= 0)
@@ -283,6 +301,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks, IPunObservable
     //ダメージ計算
     public void Damage(float power)
     {
+        Debug.Log("Damage");
         _life -= power;
     }
 
